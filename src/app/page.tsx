@@ -4,8 +4,8 @@ import Products from "./components/Products";
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
+    <main className="bg-black">
+      <div className="container p-5">
         <Products />
       </div>
     </main>

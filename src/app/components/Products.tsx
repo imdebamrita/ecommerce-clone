@@ -5,6 +5,8 @@ import Router from "next/router";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+import Card from "./Card";
+
 const Products = () => {
   const [allProducts, setProducts] = useState<any[]>([]);
   // let allProducts: any = [];
@@ -35,30 +37,39 @@ const Products = () => {
 
   return (
     <div>
-      <h1>hiii Rick</h1>
+      <h1 className="text-light my-4">Suggested Products</h1>
       <div className="container">
         <div className="allproducts">
           <div className="row">
             {allProducts.map((item: any) => (
-              <div className="col-3" key={item.id}>
-                <div className="card">
-                  <img
-                    className="card-img-top card_img"
-                    src={item.thumbnail}
-                    alt="Card image cap"
-                  />
-                  <div className="card-body">
-                    <h5 className="card-title">Card title</h5>
-                    <p className="card-text">
-                      {item.description} <br /> Price: Rs.{item.price}
-                    </p>
+              <Card
+                id={item.id}
+                title={item.title}
+                price={item.price}
+                discountPercentage={item.discountPercentage}
+                thumbnail={item.thumbnail}
+                rating={item.rating}
+                images={item.images}
+              />
+              // <div className="col-3" key={item.id}>
+              //   <div className="card">
+              //     <img
+              //       className="card-img-top card_img"
+              //       src={item.thumbnail}
+              //       alt="Card image cap"
+              //     />
+              //     <div className="card-body">
+              //       <h5 className="card-title">Card title</h5>
+              //       <p className="card-text">
+              //         {item.description} <br /> Price: Rs.{item.price}
+              //       </p>
 
-                    <a href="#" className="btn btn-primary">
-                      Buy Now
-                    </a>
-                  </div>
-                </div>
-              </div>
+              //       <a href="#" className="btn btn-primary">
+              //         Buy Now
+              //       </a>
+              //     </div>
+              //   </div>
+              // </div>
             ))}
           </div>
         </div>
