@@ -1,14 +1,18 @@
 import React from "react";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Card(item: any) {
   return (
     <div className="col-12 col-sm-6 col-md-4 col-lg-3 p-2" key={item.id}>
       <div className="card bg-black border border-light">
         <div>
-          <img
-            className="card-img-top card_img"
+          <Image
             src={item.thumbnail}
-            alt="Card image cap"
+            width={200}
+            height={200}
+            className="card-img-top card_img object-fit-contain"
+            alt={"Image of " + item.title}
           />
           {/* <div
             id="carouselExampleSlidesOnly"
@@ -62,7 +66,7 @@ export default function Card(item: any) {
           </p>
           <p className="card-text">
             Price: ₹
-            {Math.floor((item.price * (100 - item.discountPercentage)) / 100)}{" "}
+            {Math.ceil((item.price * (100 - item.discountPercentage)) / 100)}{" "}
             <span>
               <small>
                 <del className="text-secondary">₹{item.price}</del>{" "}
@@ -73,9 +77,9 @@ export default function Card(item: any) {
             </span>
           </p>
 
-          <a href="#" className="btn btn-primary">
+          <Link href={`/product/` + item.id} className="btn btn-primary">
             Buy Now
-          </a>
+          </Link>
         </div>
       </div>
     </div>
